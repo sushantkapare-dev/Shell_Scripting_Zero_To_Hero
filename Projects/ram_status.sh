@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FREE_SPACE=$(free -mt | grep "Total" | awk '{print $4}')
-TH=500
+TH=4000
 
 if [[ $FREE_SPACE -lt $TH ]]
 then 
