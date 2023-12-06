@@ -46,3 +46,29 @@ main() {
 ```
 
 ## We are running short on storage and as per the sys admin there are 25GB of blank files created by previous employees, 𝘄𝗿𝗶𝘁𝗲 𝗮 𝘀𝗰𝗿𝗶𝗽𝘁 𝘁𝗼 𝗱𝗲𝗹𝗲𝘁𝗲 𝗮𝗹𝗹 𝘀𝘂𝗰𝗵 𝗳𝗶𝗹𝗲𝘀.
+```bash
+#!/bin/bash
+
+# Specify the directory where you want to search for zero-size files
+directory="/path/to/directory"
+
+# Use the find command to locate zero-size files in the specified directory
+# and delete them using the rm command
+find "$directory" -type f -size 0 -exec rm {} \;
+```
+
+Make sure to replace `/path/to/directory` with the actual path to the directory where you want to search for and delete zero-size files.
+
+This script uses the `find` command to locate all files (`-type f`) with a size of 0 bytes (`-size 0`) in the specified directory and its subdirectories. The `-exec` option is used to execute the `rm` command on each matching file to delete it.
+
+After creating the script, you can make it executable using the `chmod` command:
+
+```bash
+chmod +x delete_empty_files.sh
+```
+
+Then, you can run the script to delete all zero-size files in the specified directory:
+
+```bash
+./delete_empty_files.sh
+```
